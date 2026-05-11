@@ -11,10 +11,10 @@ export function TakoyakiContainer({
 }: TakoyakiContainerProps) {
   return (
     <div
-      className={`relative flex flex-col items-center ${className} bg-orange-200`}
+      className={`relative flex flex-col items-center ${className} bg-[#eedbab] `}
       {...rest}
     >
-      <div className="absolute top-0 inset-0 bg-[url('/sauce.svg')] bg-repeat-x" />
+      <div className="absolute top-0 left-0 right-0 h-18 bg-[url('/sauce.svg')] bg-repeat-x pointer-events-none" />
       {children}
     </div>
   );
