@@ -18,7 +18,7 @@ export default function Layout({
           </div>
         }
       />
-      <TakoyakiContainer>
+      <TakoyakiContainer className="flex-1 w-full">
         <main className="w-full">{children}</main>
       </TakoyakiContainer>
       <BottomNav />
