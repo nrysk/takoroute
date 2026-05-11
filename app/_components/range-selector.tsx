@@ -58,7 +58,7 @@ function RangeCard({
   return (
     <button
       className={cn(
-        "flex flex-col items-center justify-center min-w-18 h-22 bg-white rounded-xl ring-inset transition-colors hover:bg-gray-100",
+        "flex flex-col items-center justify-center min-w-18 h-22 bg-white rounded-xl ring-inset transition-colors hover:bg-gray-100 select-none ",
         className,
         {
           "ring-3 ring-amber-800": selected,
@@ -74,7 +74,7 @@ function RangeCard({
             src="/takoyaki.png"
             alt="takoyaki"
             key={TAKOYAKI_IDS[index]}
-            className="size-8 object-cover"
+            className="size-8 object-cover pointer-events-none"
             width={32}
             height={32}
           />
