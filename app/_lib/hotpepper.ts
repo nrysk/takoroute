@@ -63,3 +63,37 @@ export async function fetchTakoyakiShops(params: {
   const data = await response.json();
   return data;
 }
+
+export async function fetchShopById(id: string): Promise<HotpepperShop | null> {
+  const apiKey = process.env.HOTPEPPER_API_KEY;
+  if (!apiKey) {
+    throw new Error(
+      "HOTPEPPER_API_KEY is not defined in environment variables.",
+    );
+  }
+
+  const queryParams = new URLSearchParams({
+    key: apiKey,
+    id,
+    keyword: "たこ焼き",
+    format: "json",
+  });
+
+  const response = await fetch(
+    `${HOTPEPPER_API_URL}?${queryParams.toString()}`,
+    {
+      next: { revalidate: 60 },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Hotpepper API request failed: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+
+  if (data.results.results_available === 0) {
+    return null;
+  }
+  return data.results.shop[0];
+}
