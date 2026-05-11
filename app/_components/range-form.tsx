@@ -1,9 +1,9 @@
 "use client";
 
-import { ComponentPropsWithoutRef, useState } from "react";
-import { RangeSelector } from "./range-selector";
-import { cn } from "../_lib/utils";
 import { useRouter } from "next/navigation";
+import { type ComponentPropsWithoutRef, useState } from "react";
+import { cn } from "../_lib/utils";
+import { RangeSelector } from "./range-selector";
 
 interface RangeFormProps extends ComponentPropsWithoutRef<"div"> {}
 

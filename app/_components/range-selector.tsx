@@ -1,8 +1,8 @@
 "use client";
 
-import { ComponentPropsWithoutRef } from "react";
-import { cn } from "../_lib/utils";
 import Image from "next/image";
+import type { ComponentPropsWithoutRef } from "react";
+import { cn } from "../_lib/utils";
 
 const RADIUS_OPTIONS = [
   { id: 1, label: "300m", count: 1 },

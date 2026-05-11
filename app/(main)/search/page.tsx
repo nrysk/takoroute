@@ -1,5 +1,4 @@
 import { RangeForm } from "@/app/_components/range-form";
-import { RangeSelector } from "@/app/_components/range-selector";
 
 export default function Page() {
   return (
