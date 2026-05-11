@@ -1,8 +1,8 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Pagination } from "@/app/_components/pagination";
 import { ShopCard } from "@/app/_components/shop-card";
 import { fetchTakoyakiShops } from "@/app/_lib/hotpepper";
-import Link from "next/link";
 
 export default async function Page({
   searchParams,
