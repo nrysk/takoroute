@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { type ComponentPropsWithoutRef, useState } from "react";
 import { cn } from "../_lib/utils";
 import { RangeSelector } from "./range-selector";
+import { Button } from "./ui/tr-button";
 
 interface RangeFormProps extends ComponentPropsWithoutRef<"div"> {}
 
@@ -51,24 +52,20 @@ export function RangeForm({ className, ...rest }: RangeFormProps) {
     >
       <h2 className="text-xl font-bold">現在地から探す</h2>
       <RangeSelector selectedId={selectedId} onRangeSelect={setSelectedId} />
-      <button
-        className="px-4 py-2 bg-sky-500 text-white rounded-lg active:bg-sky-600 transition-colors"
-        onClick={handleSubmit}
-        type="button"
-      >
+      <Button onClick={handleSubmit} disabled={isLoading}>
         {isLoading ? "検索中..." : "この条件で検索"}
-      </button>
-      <button
-        className="px-4 py-2 bg-sky-500 text-white rounded-lg active:bg-sky-600 transition-colors"
+      </Button>
+
+      <Button
         onClick={() =>
           router.push(
             `/search/results?lat=34.6645&lon=135.5013&range=${selectedId}`,
           )
         }
-        type="button"
+        disabled={isLoading}
       >
         {isLoading ? "検索中..." : "位置情報無しで確認用（難波駅周辺）"}
-      </button>
+      </Button>
     </div>
   );
 }

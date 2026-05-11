@@ -56,11 +56,6 @@ export default async function Page({
         <p className="">{shop.close}</p>
       </div>
 
-      {/* <p className="">{shop.access}</p>
-      <p className="">{shop.address}</p>
-      <p className="">営業時間: {shop.open}</p>
-      <p className="">定休日　: {shop.close}</p> */}
-
       <BackFab />
     </div>
   );
