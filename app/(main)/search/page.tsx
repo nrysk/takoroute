@@ -1,8 +1,10 @@
+import { RangeForm } from "@/app/_components/range-form";
+import { RangeSelector } from "@/app/_components/range-selector";
+
 export default function Page() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-4xl font-bold">Search Page</h1>
-      <p className="mt-4 text-lg">This is the search page.</p>
+    <div className="flex flex-col items-center justify-center min-h-svh py-2">
+      <RangeForm />
     </div>
   );
 }

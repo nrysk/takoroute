@@ -20,7 +20,7 @@ export function BottomNav({ className, ...rest }: BottomNavProps) {
   return (
     <nav
       className={cn(
-        "fixed bottom-2 left-0 right-0 mx-auto w-9/12 max-w-2xl rounded-xl py-1 px-2 bg-white",
+        "fixed bottom-2 left-0 right-0 mx-auto w-9/12 max-w-2xl rounded-xl py-1 px-2 bg-white shadow-md",
         className,
       )}
       {...rest}
