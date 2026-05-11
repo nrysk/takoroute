@@ -28,7 +28,7 @@ export function RangeForm({ className, ...rest }: RangeFormProps) {
       (position) => {
         const { latitude, longitude } = position.coords;
         router.push(
-          `/search/results?lat=${latitude}&lng=${longitude}&range=${selectedId}`,
+          `/search/results?lat=${latitude}&lon=${longitude}&range=${selectedId}`,
         );
         setIsLoading(false);
       },
@@ -62,7 +62,7 @@ export function RangeForm({ className, ...rest }: RangeFormProps) {
         className="px-4 py-2 bg-sky-500 text-white rounded-lg active:bg-sky-600 transition-colors"
         onClick={() =>
           router.push(
-            `/search/results?lat=34.6645&lng=135.5013&range=${selectedId}`,
+            `/search/results?lat=34.6645&lon=135.5013&range=${selectedId}`,
           )
         }
         type="button"

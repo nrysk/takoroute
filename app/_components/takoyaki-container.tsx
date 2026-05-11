@@ -11,7 +11,7 @@ export function TakoyakiContainer({
 }: TakoyakiContainerProps) {
   return (
     <div
-      className={`relative flex flex-col items-center ${className} bg-[#eedbab] `}
+      className={`relative flex flex-col items-center ${className} bg-[#eedbab] pt-18 pb-18`}
       {...rest}
     >
       <div className="absolute top-0 left-0 right-0 h-18 bg-[url('/sauce.svg')] bg-repeat-x pointer-events-none" />

@@ -2,6 +2,16 @@
 
 たこ焼き検索アプリ
 
+## 開発環境
+
+
+
+- `.env.local`にホットペッパーグルメAPIのキーを設定
+
+  ```.env.local
+  HOTPEPPER_API_KEY=XXXXXXX
+  ```
+
 ## プロジェクト構成
 
 ```
