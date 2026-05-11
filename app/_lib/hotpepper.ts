@@ -1,51 +1,80 @@
-export interface HotpepperShop {
-  id: string;
-  name: string;
-  access: string;
-  photo: { pc: { l: string; m: string; s: string } };
-  address: string;
-  lat: string;
-  lng: string;
-  open: string; // lite指定時は不可
-  close: string; // lite指定時は不可
-}
+import z from "zod";
+import { env } from "./env";
 
-export interface GourmetResponse {
-  results: {
-    results_available: number;
-    results_returned: number;
-    results_start: number;
-    shop: HotpepperShop[];
-  };
-}
+export const hotpepperShopSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  access: z.string(),
+  photo: z.object({
+    pc: z.object({
+      l: z.url(),
+      m: z.url(),
+      s: z.url(),
+    }),
+  }),
+  address: z.string(),
+  lat: z.coerce.number(),
+  lng: z.coerce.number(),
+  open: z.string().optional(), // lite指定時は無い
+  close: z.string().optional(), // lite指定時は無い
+});
+
+export const hotpepperResponseSchema = z.object({
+  results: z.object({
+    results_available: z.number(),
+    results_returned: z.coerce.number(), // 謎に文字列なので数値に変換する
+    results_start: z.number(),
+    shop: z.array(hotpepperShopSchema),
+  }),
+});
+
+export type HotpepperShop = z.infer<typeof hotpepperShopSchema>;
+export type HotpepperResponse = z.infer<typeof hotpepperResponseSchema>;
+// export interface HotpepperShop {
+//   id: string;
+//   name: string;
+//   access: string;
+//   photo: { pc: { l: string; m: string; s: string } };
+//   address: string;
+//   lat: string;
+//   lng: string;
+//   open: string; // lite指定時は不可
+//   close: string; // lite指定時は不可
+// }
+
+// export interface HotpepperResponse {
+//   results: {
+//     results_available: number;
+//     results_returned: string; // 謎に文字列なので注意
+//     results_start: number;
+//     shop: HotpepperShop[];
+//   };
+// }
 
 const HOTPEPPER_API_URL =
   "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/";
 const COUNT_PER_PAGE = 10;
 
 export async function fetchTakoyakiShops(params: {
-  lat: string;
-  lon: string;
-  range: string;
-  start?: string;
-}): Promise<GourmetResponse> {
-  const { lat, lon, range } = params;
+  lat: number;
+  lon: number;
+  range: number;
+  start: number;
+  lite?: boolean;
+}): Promise<HotpepperResponse> {
+  const { lat, lon, range, start, lite } = params;
 
-  const apiKey = process.env.HOTPEPPER_API_KEY;
-  if (!apiKey) {
-    throw new Error(
-      "HOTPEPPER_API_KEY is not defined in environment variables.",
-    );
-  }
+  const apiKey = env.HOTPEPPER_API_KEY;
 
   const queryParams = new URLSearchParams({
     key: apiKey,
-    lat,
-    lng: lon,
-    range,
-    start: params.start || "1",
+    lat: lat.toString(),
+    lng: lon.toString(),
+    range: range.toString(),
+    start: start.toString(),
     count: COUNT_PER_PAGE.toString(),
     keyword: "たこ焼き",
+    type: lite ? "lite" : "",
     format: "json",
   });
 
@@ -60,17 +89,13 @@ export async function fetchTakoyakiShops(params: {
     throw new Error(`Hotpepper API request failed: ${response.statusText}`);
   }
 
-  const data = await response.json();
-  return data;
+  const rawData = await response.json();
+  const parsedResult = hotpepperResponseSchema.parse(rawData);
+  return parsedResult;
 }
 
 export async function fetchShopById(id: string): Promise<HotpepperShop | null> {
-  const apiKey = process.env.HOTPEPPER_API_KEY;
-  if (!apiKey) {
-    throw new Error(
-      "HOTPEPPER_API_KEY is not defined in environment variables.",
-    );
-  }
+  const apiKey = env.HOTPEPPER_API_KEY;
 
   const queryParams = new URLSearchParams({
     key: apiKey,
@@ -91,9 +116,10 @@ export async function fetchShopById(id: string): Promise<HotpepperShop | null> {
   }
 
   const data = await response.json();
+  const parsedResult = hotpepperResponseSchema.parse(data);
 
-  if (data.results.results_available === 0) {
+  if (parsedResult.results.results_available === 0) {
     return null;
   }
-  return data.results.shop[0];
+  return parsedResult.results.shop[0];
 }
