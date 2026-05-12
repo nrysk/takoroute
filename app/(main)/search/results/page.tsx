@@ -4,6 +4,7 @@ import z from "zod";
 import { Pagination } from "@/app/_components/pagination";
 import { ShopCard } from "@/app/_components/shop-card";
 import { fetchTakoyakiShops } from "@/app/_lib/hotpepper";
+import { calculateDistanceMeters } from "@/app/_lib/utils";
 
 const searchParamsSchema = z.object({
   lat: z.coerce.number().min(-90).max(90),
@@ -83,6 +84,7 @@ export default async function Page({
               name={shop.name}
               access={shop.access}
               photoUrl={shop.photo.pc.m}
+              distance={calculateDistanceMeters(lat, lon, shop.lat, shop.lng)}
             />
           </li>
         ))}
