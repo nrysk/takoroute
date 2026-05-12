@@ -5,6 +5,7 @@ import { cherryBombOne, monomaniacOne, zenMaruGothic } from "./fonts";
 export const metadata: Metadata = {
   title: "タコルート",
   description: "たこ焼き検索ウェブアプリ",
+  keywords: ["たこ焼き", "検索"],
 };
 
 export default function RootLayout({
