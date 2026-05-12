@@ -1,7 +1,9 @@
 import { cva, type VariantProps } from "class-variance-authority";
+import Link, { type LinkProps } from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
+import { cn } from "@/app/_lib/utils";
 
-const buttonVariants = cva(
+const linkVariants = cva(
   "inline-flex items-center justify-center rounded-full font-bold transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
@@ -19,24 +21,15 @@ const buttonVariants = cva(
   },
 );
 
-interface TrButtonProps
-  extends ComponentPropsWithoutRef<"button">,
-    VariantProps<typeof buttonVariants> {}
+interface TrLinkProps
+  extends Omit<ComponentPropsWithoutRef<"a">, keyof LinkProps>,
+    LinkProps,
+    VariantProps<typeof linkVariants> {}
 
-export function TrButton({
-  className,
-  variant,
-  size,
-  disabled,
-  ...props
-}: TrButtonProps) {
+export function TrLink({ className, variant, size, ...props }: TrLinkProps) {
   return (
-    <button
-      className={buttonVariants({ variant, size, className })}
-      disabled={disabled}
-      {...props}
-    >
+    <Link className={cn(linkVariants({ variant, size, className }))} {...props}>
       {props.children}
-    </button>
+    </Link>
   );
 }

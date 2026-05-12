@@ -1,10 +1,13 @@
-import Link from "next/link";
+import { SearchAlertIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import z from "zod";
 import { Pagination } from "@/app/_components/pagination";
 import { ShopCard } from "@/app/_components/shop-card";
+import { TrLink } from "@/app/_components/ui/tr-link";
 import { fetchTakoyakiShops } from "@/app/_lib/hotpepper";
 import { calculateDistanceMeters } from "@/app/_lib/utils";
+
+const DISTANCES = ["300m", "500m", "1km", "2km", "3km"] as const;
 
 const searchParamsSchema = z.object({
   lat: z.coerce.number().min(-90).max(90),
@@ -39,7 +42,8 @@ export default async function Page({
   // 結果が0件の場合は、検索条件を変更するよう促すメッセージを表示
   if (results_returned === 0) {
     return (
-      <div className="flex flex-col items-center justify-center gap-2">
+      <div className="flex flex-col items-center justify-center gap-6 pt-16">
+        <SearchAlertIcon className="size-12" />
         <h2 className="text-2xl font-bold ">
           近くにたこ焼き屋さんが見つかりませんでした。
           <br />
@@ -47,16 +51,13 @@ export default async function Page({
         </h2>
         {/* 半径が最大ではない場合は、1段階上げるLinkを表示 */}
         {range === 5 ? (
-          <Link href="/search" className="text-blue-500 hover:underline">
-            検索条件を変更する
-          </Link>
+          <TrLink href="/search">検索条件を変更する</TrLink>
         ) : (
-          <Link
+          <TrLink
             href={`/search/results?lat=${lat}&lon=${lon}&range=${range + 1}&start=1`}
-            className="text-blue-500 hover:underline"
           >
-            半径を広げて再検索する
-          </Link>
+            半径を{DISTANCES[range + 1]}に広げて再検索する
+          </TrLink>
         )}
       </div>
     );
@@ -64,6 +65,9 @@ export default async function Page({
 
   return (
     <div className="flex flex-col items-center justify-center gap-2">
+      <TrLink href="/search" className="">
+        戻る
+      </TrLink>
       <h2 className="text-2xl font-bold">検索結果</h2>
       <Pagination
         total={results_available}
