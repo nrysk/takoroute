@@ -13,14 +13,15 @@ export default function Home() {
       </Link>
 
       <a href="http://webservice.recruit.co.jp/">
-        {/** biome-ignore lint/performance/noImgElement: クレジット掲載方法に従っているため */}
+        {/** biome-ignore lint/performance/noImgElement: クレジット表示のため */}
         <img
-          src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif"
+          src="http://webservice.recruit.co.jp/banner/hotpepper-m.gif"
           alt="ホットペッパーグルメ Webサービス"
-          width="135"
-          height="17"
-          border="0"
+          width="88"
+          height="35"
+          // border="0"
           title="ホットペッパーグルメ Webサービス"
+          className="border-0"
         />
       </a>
     </div>
