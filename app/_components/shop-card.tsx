@@ -1,3 +1,4 @@
+import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
@@ -7,8 +8,9 @@ interface ShopCardProps extends ComponentPropsWithoutRef<"div"> {
   id: string;
   name: string;
   access: string;
-  distance?: number;
   photoUrl: string;
+  catch: string;
+  distance?: number;
 }
 
 export function ShopCard({
@@ -16,6 +18,7 @@ export function ShopCard({
   name,
   access,
   photoUrl,
+  catch: catchPhrase,
   distance,
   className,
   ...rest
@@ -43,10 +46,20 @@ export function ShopCard({
           </span>
         )}
       </div>
-      <div className="flex flex-col flex-1 gap-0.5">
+      <div className="flex flex-col flex-1 gap-1">
         <h3 className="text-lg font-semibold">{name}</h3>
 
         <p className="text-sm text-gray-500 line-clamp-2">{access}</p>
+
+        {catchPhrase && (
+          <div className="flex flex-col bg-gray-100 p-2 rounded-lg gap-1">
+            <span className="flex flex-row items-center gap-2 text-gray-500 text-sm">
+              <MessageCircle className="size-3" />
+              <p>キャッチコメント</p>
+            </span>
+            <p className="text-sm text-gray-600 line-clamp-3">{catchPhrase}</p>
+          </div>
+        )}
         <Link
           href={`/shops/${id}`}
           className="text-blue-500 hover:underline self-end"

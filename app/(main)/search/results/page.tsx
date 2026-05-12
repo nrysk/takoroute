@@ -88,6 +88,7 @@ export default async function Page({
               name={shop.name}
               access={shop.access}
               photoUrl={shop.photo.pc.m}
+              catch={shop.catch}
               distance={calculateDistanceMeters(lat, lon, shop.lat, shop.lng)}
             />
           </li>

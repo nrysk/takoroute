@@ -17,6 +17,12 @@ export const hotpepperShopSchema = z.object({
   lng: z.coerce.number(),
   open: z.string().optional(), // lite指定時は無い
   close: z.string().optional(), // lite指定時は無い
+  catch: z.string(),
+  budget: z
+    .object({
+      name: z.string(),
+    })
+    .optional(), // lite指定時は無い
 });
 
 export const hotpepperResponseSchema = z.object({
@@ -30,26 +36,6 @@ export const hotpepperResponseSchema = z.object({
 
 export type HotpepperShop = z.infer<typeof hotpepperShopSchema>;
 export type HotpepperResponse = z.infer<typeof hotpepperResponseSchema>;
-// export interface HotpepperShop {
-//   id: string;
-//   name: string;
-//   access: string;
-//   photo: { pc: { l: string; m: string; s: string } };
-//   address: string;
-//   lat: string;
-//   lng: string;
-//   open: string; // lite指定時は不可
-//   close: string; // lite指定時は不可
-// }
-
-// export interface HotpepperResponse {
-//   results: {
-//     results_available: number;
-//     results_returned: string; // 謎に文字列なので注意
-//     results_start: number;
-//     shop: HotpepperShop[];
-//   };
-// }
 
 const HOTPEPPER_API_URL =
   "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/";
@@ -91,6 +77,7 @@ export async function fetchTakoyakiShops(params: {
 
   const rawData = await response.json();
   const parsedResult = hotpepperResponseSchema.parse(rawData);
+
   return parsedResult;
 }
 

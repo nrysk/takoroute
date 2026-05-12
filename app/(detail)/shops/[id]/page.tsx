@@ -20,8 +20,13 @@ export default async function Page({
     notFound();
   }
 
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shop.address)}`;
+  let budgetInfo = "情報なし";
+  if (shop.budget?.name) {
+    budgetInfo = shop.budget.name;
+  }
 
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shop.address)}`;
+  console.log(shop.budget);
   return (
     <div className="flex flex-col items-start justify-center min-h-svh gap-4 max-w-lg mx-auto p-2">
       <h1 className="text-2xl font-bold">{shop.name}</h1>
@@ -54,6 +59,11 @@ export default async function Page({
       <div className="flex flex-row">
         <p className="text-nowrap font-bold">定休日　：</p>
         <p className="">{shop.close}</p>
+      </div>
+
+      <div className="flex flex-row">
+        <p className="text-nowrap font-bold">予算　　：</p>
+        <p className="">{budgetInfo}</p>
       </div>
 
       <BackFab />
