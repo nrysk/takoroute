@@ -22,7 +22,7 @@ export function BackFab({ className, ...rest }: BackFabProps) {
     <button
       onClick={handleClick}
       className={cn(
-        "fixed bottom-4 left-4 flex items-center justify-center size-14 p-3 rounded-full bg-amber-900 text-white shadow-lg hover:bg-amber-700 transition-colors",
+        "fixed bottom-4 left-4 flex items-center justify-center size-14 p-3 rounded-full bg-primary text-white shadow-lg hover:bg-amber-700 transition-colors",
         className,
       )}
       {...rest}

@@ -24,7 +24,7 @@ export function RangeSelector({
   ...rest
 }: RangeSelectorProps) {
   return (
-    <div className={cn("flex flex-row flex-wrap gap-2", className)} {...rest}>
+    <div className={cn("flex flex-row flex-wrap gap-2 ", className)} {...rest}>
       {RADIUS_OPTIONS.map(({ id, label }) => (
         <RangeCard
           key={id}
@@ -58,7 +58,7 @@ function RangeCard({
   return (
     <button
       className={cn(
-        "flex flex-col items-center justify-center min-w-18 h-22 bg-white rounded-xl ring-inset transition-colors hover:bg-gray-100 select-none ",
+        "flex flex-col items-center justify-center min-w-18 h-22 rounded-xl ring-inset transition-colors hover:bg-gray-100 select-none bg-[url('/wood-pattern.png')] bg-cover bg-white  ",
         className,
         {
           "ring-3 ring-amber-800": selected,

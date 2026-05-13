@@ -50,13 +50,15 @@ export default async function Page({
           検索条件を変更して再度お試しください。
         </h2>
         {/* 半径が最大ではない場合は、1段階上げるLinkを表示 */}
-        {range === 5 ? (
-          <TrLink href="/search">検索条件を変更する</TrLink>
-        ) : (
+        <TrLink href="/search" variant="primary">
+          検索条件を変更する
+        </TrLink>
+        {range < 5 && (
           <TrLink
             href={`/search/results?lat=${lat}&lon=${lon}&range=${range + 1}&start=1`}
+            variant="secondary"
           >
-            半径を{DISTANCES[range + 1]}に広げて再検索する
+            半径を{DISTANCES[range]}に広げて再検索する
           </TrLink>
         )}
       </div>
@@ -64,11 +66,13 @@ export default async function Page({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2">
-      <TrLink href="/search" className="">
-        戻る
+    <div className="flex flex-col items-center justify-center gap-4 pt-4 pb-24">
+      <TrLink href="/search" variant="secondary">
+        検索ページに戻る
       </TrLink>
-      <h2 className="text-2xl font-bold">検索結果</h2>
+      <h2 className="text-2xl font-bold">
+        {results_available}件が見つかりました
+      </h2>
       <Pagination
         total={results_available}
         current={start}

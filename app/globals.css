@@ -2,11 +2,23 @@
 
 @theme {
   --font-sans: var(--font-zen-maru-gothic), ui-sans-serif, system-ui;
-  --font-header: var(--font-monomaniac-one);
+  --font-header: var(--font-shippori-mincho);
   --font-accent: var(--font-cherry-bomb-one);
+}
+
+@theme inline {
+  --color-primary: #0d5661; /* 藍 */
+  --color-on-primary: #fff; /* 白 */
+  --color-secondary: #ab3b3a; /* 真朱 */
+  --color-on-secondary: #fff; /* 白 */
+  --color-tertiary: #5b622e; /* 海松 */
+  --color-on-tertiary: #fff; /* 白 */
+  --color-background: #ffba84; /* 洒落柿 */
+  --color-background-variant: #fad689;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #eedbab;
+  background-color: var(--color-background);
+  background-image: url("/asfalt-light.png");
 }
