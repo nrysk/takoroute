@@ -2,27 +2,9 @@
 
 たこ焼き検索アプリ
 
-## 開発環境
+## 簡易仕様書
 
-
-
-- `.env.local`にホットペッパーグルメAPIのキーを設定
-
-  ```.env.local
-  HOTPEPPER_API_KEY=XXXXXXX
-  ```
-
-## プロジェクト構成
-
-```
-takoroute
-|-- app
-|   |-- _components # 汎用コンポーネント
-|   |   |-- ui # 汎用UIコンポーネント
-|   |-- _features # 固有機能
-|   |-- _types # 共通の型
-|   |-- _lib
-```
+[簡易仕様書](./簡易仕様書.md)
 
 ## 使用素材（Credits）
 - 背景テクスチャ: [Transparent Textures](https://www.transparenttextures.com/) (Pattern by [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/)): CC BY-SA 3.0
