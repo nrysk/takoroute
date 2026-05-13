@@ -57,7 +57,7 @@ export function RangeForm({ className, ...rest }: RangeFormProps) {
     >
       <h2 className="text-xl font-bold">現在地からの距離で探す</h2>
       <RangeSelector selectedId={selectedId} onRangeSelect={setSelectedId} />
-      <TrButton onClick={handleSubmit} disabled={isLoading}>
+      <TrButton onClick={handleSubmit} disabled={isLoading} variant="secondary">
         {isLoading ? "検索中..." : "この条件で検索"}
       </TrButton>
     </div>

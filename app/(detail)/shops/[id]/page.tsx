@@ -28,7 +28,7 @@ export default async function Page({
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shop.address)}`;
   console.log(shop.budget);
   return (
-    <div className="flex flex-col items-start justify-center min-h-svh gap-4 max-w-lg mx-auto p-2">
+    <div className="flex flex-col items-start justify-center min-h-svh gap-4 max-w-lg mx-auto p-2 ">
       <h1 className="text-2xl font-bold">{shop.name}</h1>
       <Image
         src={shop.photo.pc.l}

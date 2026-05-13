@@ -8,7 +8,8 @@ const linkVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-sky-500 text-white hover:bg-sky-600",
+        primary: "bg-primary hover:bg-primary/90 text-on-primary",
+        secondary: "bg-secondary hover:bg-secondary/90 text-on-secondary",
       },
       size: {
         default: "px-4 py-2",
