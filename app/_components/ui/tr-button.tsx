@@ -8,6 +8,7 @@ const buttonVariants = cva(
       variant: {
         primary: "bg-primary hover:bg-primary/90 text-on-primary",
         secondary: "bg-secondary hover:bg-secondary/90 text-on-secondary",
+        tertiary: "bg-tertiary hover:bg-tertiary/90 text-on-tertiary",
       },
       size: {
         default: "px-4 py-2",
