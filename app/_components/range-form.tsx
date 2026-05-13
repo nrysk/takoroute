@@ -1,5 +1,6 @@
 "use client";
 
+import { LoaderCircle, SearchIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { type ComponentPropsWithoutRef, useState } from "react";
 import { cn } from "../_lib/utils";
@@ -31,7 +32,6 @@ export function RangeForm({ className, ...rest }: RangeFormProps) {
         router.push(
           `/search/results?lat=${latitude}&lon=${longitude}&range=${selectedId}`,
         );
-        setIsLoading(false);
       },
       () => {
         alert(
@@ -58,6 +58,7 @@ export function RangeForm({ className, ...rest }: RangeFormProps) {
       <h2 className="text-xl font-bold">現在地からの距離で探す</h2>
       <RangeSelector selectedId={selectedId} onRangeSelect={setSelectedId} />
       <TrButton onClick={handleSubmit} disabled={isLoading} variant="secondary">
+        {isLoading ? <LoaderCircle className="animate-spin" /> : <SearchIcon />}
         {isLoading ? "検索中..." : "この条件で検索"}
       </TrButton>
     </div>

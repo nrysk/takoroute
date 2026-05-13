@@ -17,13 +17,13 @@ export function Header({ rightAction, className, ...rest }: HeaderProps) {
     >
       <div className="flex items-center gap-2 h-full">
         <Image
-          src="/tsutenkaku.png"
-          alt="Tsutenkaku Tower"
+          src="/icon.png"
+          alt="たこるーとのアイコン"
           width={40}
           height={40}
-          className="object-cover h-full"
+          className="object-contain"
         />
-        <h1 className="font-header font-bold text-white text-4xl ">
+        <h1 className="font-header font-bold text-on-primary text-4xl ">
           たこるーと
         </h1>
       </div>
