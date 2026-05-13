@@ -1,16 +1,15 @@
 import Link from "next/link";
+import { TrLink } from "./_components/ui/tr-link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-4xl font-bold">Welcome to タコルート!</h1>
-      <p className="mt-4 text-lg font-accent">
-        Find the best takoyaki spots in town.
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 gap-4">
+      <h1 className="text-2xl font-bold font-header">たこるーと</h1>
+      <p>
+        「たこるーと」は、現在地から近くのたこ焼き屋さんを探すためのアプリです。
       </p>
 
-      <Link href="/search" className="mt-6">
-        始める
-      </Link>
+      <TrLink href="/search">始める</TrLink>
 
       <a href="http://webservice.recruit.co.jp/">
         {/** biome-ignore lint/performance/noImgElement: クレジット表示のため */}
