@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "../_lib/utils";
-import Link from "next/link";
 
 interface HeaderProps extends ComponentPropsWithoutRef<"header"> {
   rightAction?: React.ReactNode;

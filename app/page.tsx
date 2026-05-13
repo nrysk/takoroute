@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { TrLink } from "./_components/ui/tr-link";
 
 export default function Home() {

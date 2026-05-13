@@ -1,5 +1,5 @@
-import { HotpepperShop } from "@/app/_lib/hotpepper";
 import Image from "next/image";
+import type { HotpepperShop } from "@/app/_lib/hotpepper";
 
 export function DetailCard({ shop }: { shop: HotpepperShop }) {
   let budgetInfo = "情報なし";

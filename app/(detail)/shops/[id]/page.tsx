@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
 import { BackFab } from "@/app/_components/back-fab";
 import { fetchShopById } from "@/app/_lib/hotpepper";
