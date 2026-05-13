@@ -64,7 +64,7 @@ export function Pagination({
         aria-disabled={!hasNext}
       >
         <span className="text-sm">次へ</span>
-        <ArrowRightIcon className="size-5 rotate-180" />
+        <ArrowRightIcon className="size-5" />
       </TrLink>
     </div>
   );

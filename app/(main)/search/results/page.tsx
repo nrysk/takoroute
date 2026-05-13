@@ -58,7 +58,7 @@ export default async function Page({
             href={`/search/results?lat=${lat}&lon=${lon}&range=${range + 1}&start=1`}
             variant="secondary"
           >
-            半径を{DISTANCES[range + 1]}に広げて再検索する
+            半径を{DISTANCES[range]}に広げて再検索する
           </TrLink>
         )}
       </div>
@@ -66,7 +66,7 @@ export default async function Page({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 pt-4 pb-20">
+    <div className="flex flex-col items-center justify-center gap-4 pt-4 pb-24">
       <TrLink href="/search" variant="secondary">
         検索ページに戻る
       </TrLink>
